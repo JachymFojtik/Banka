@@ -22,6 +22,7 @@ namespace Banka
     {
         public MainWindow()
         {
+            //test
             InitializeComponent();
         }
     }
