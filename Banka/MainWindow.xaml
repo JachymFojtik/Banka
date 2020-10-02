@@ -7,15 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="600">
   <Grid>
-    <Button x:Name="bPridat" Content="Přidat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="51,86,0,0" Click="Button_Click"/>
+    <Button x:Name="bPridat" Content="Přidat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="51,86,0,0" Click="bPridat_Click"/>
     <TextBox x:Name="tbPridat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="51,38,0,0"/>
     <ListBox x:Name="lbUcty" HorizontalAlignment="Left" Height="211" VerticalAlignment="Top" Width="157" Margin="252,38,0,0" SelectionChanged="LbUcty_SelectionChanged">    </ListBox>
 
 
-    <Label x:Name="lZustatek" Content="Zůstatek: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,38,0,0"/>
+    <Label x:Name="lZustatek" Content="Zůstatek: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,86,0,0"/>
     <ComboBox x:Name="cbCisla" HorizontalAlignment="Left" VerticalAlignment="Top" Width="57" Margin="51,130,0,0">    </ComboBox>
 
-    <Button x:Name="bCas" Content="Posunout čas" HorizontalAlignment="Left" Margin="120,132,0,0" VerticalAlignment="Top" Width="82"/>
+    <Button x:Name="bCas" Content="Posunout čas" HorizontalAlignment="Left" Margin="120,132,0,0" VerticalAlignment="Top" Width="82" Click="bCas_Click"/>
+    <Label x:Name="lNazev" Content="Název účtu: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,38,0,0"/>
+    <Button x:Name="bVybrat" Content="Vybrat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="144,86,0,0" Click="bVybrat_Click"/>
 
   </Grid>
 </Window>

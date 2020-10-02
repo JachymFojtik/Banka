@@ -24,12 +24,14 @@ namespace Banka
         public MainWindow()
         {
             InitializeComponent();
-            Sporici s1 = new Sporici();
-            Sporici s2 = new Sporici(500);
+            Sporici s1 = new Sporici("Jachym");
+            Sporici s2 = new Sporici("Petr", 500);
             lbUcty.Items.Add("Jachym");
+            lbUcty.Items.Add(s2.Jmeno);
             try
             {
                 vyber = lbUcty.SelectedItem.ToString();
+                lNazev.Content = $"Název účtu: {vyber}";
             }
             catch (Exception)
             {
@@ -41,23 +43,38 @@ namespace Banka
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+          
         }
 
         private void LbUcty_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            vyber = lbUcty.SelectedItem.ToString();
+            lNazev.Content = $"Název účtu: {vyber}";
+        }
+
+        private void bPridat_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bCas_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+        private void bVybrat_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
+
     public class Ucet
     {
         public decimal Zustatek { get; set; }
         public string Jmeno { get; set; }
 
-        //public Ucet(decimal z)
-        //{
-        //    Zustatek += z;
-        //}
         public void Pridat(string s)
         {
             try
@@ -71,16 +88,4 @@ namespace Banka
             }
         }
     }
-    public class Sporici : Ucet
-    {
-        public Sporici(decimal z)
-        {
-            Zustatek = z;
-        }
-        public Sporici()
-        {
-            Zustatek = 0;
-        }
-    }
-
 }
