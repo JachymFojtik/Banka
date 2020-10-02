@@ -20,22 +20,39 @@ namespace Banka
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string vyber;
         public MainWindow()
         {
             InitializeComponent();
             Sporici s1 = new Sporici();
             Sporici s2 = new Sporici(500);
+            lbUcty.Items.Add("Jachym");
+            try
+            {
+                vyber = lbUcty.SelectedItem.ToString();
+            }
+            catch (Exception)
+            {
+                vyber = "";
+            }
+
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void LbUcty_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
-    public abstract class Ucet
+    public class Ucet
     {
         public decimal Zustatek { get; set; }
+        public string Jmeno { get; set; }
 
         //public Ucet(decimal z)
         //{
@@ -50,16 +67,15 @@ namespace Banka
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Špatný formát");
             }
         }
     }
     public class Sporici : Ucet
     {
-        public decimal Zustatek { get; set; }
         public Sporici(decimal z)
         {
-
+            Zustatek = z;
         }
         public Sporici()
         {
