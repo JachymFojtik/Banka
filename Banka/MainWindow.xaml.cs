@@ -22,8 +22,49 @@ namespace Banka
     {
         public MainWindow()
         {
-            //test
             InitializeComponent();
+            Sporici s1 = new Sporici();
+            Sporici s2 = new Sporici(500);
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
+    public abstract class Ucet
+    {
+        public decimal Zustatek { get; set; }
+
+        //public Ucet(decimal z)
+        //{
+        //    Zustatek += z;
+        //}
+        public void Pridat(string s)
+        {
+            try
+            {
+                int i = int.Parse(s);
+                Zustatek += i;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+    }
+    public class Sporici : Ucet
+    {
+        public decimal Zustatek { get; set; }
+        public Sporici(decimal z)
+        {
+
+        }
+        public Sporici()
+        {
+            Zustatek = 0;
+        }
+    }
+
 }

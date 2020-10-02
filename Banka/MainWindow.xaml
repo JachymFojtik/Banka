@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Banka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="600">
+  <Grid>
+    <Button x:Name="bPridat" Content="Přidat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="51,86,0,0" Click="Button_Click"/>
+    <TextBox x:Name="tbPridat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="51,38,0,0"/>
+    <ListBox x:Name="lbUcty" HorizontalAlignment="Left" Height="211" VerticalAlignment="Top" Width="157" Margin="252,38,0,0">
+
+    </ListBox>
+    <Label x:Name="lZustatek" Content="Zůstatek: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,38,0,0"/>
+    <ComboBox x:Name="cbCisla" HorizontalAlignment="Left" VerticalAlignment="Top" Width="57" Margin="51,130,0,0">
+    </ComboBox>
+    <Button x:Name="bCas" Content="Posunout čas" HorizontalAlignment="Left" Margin="120,132,0,0" VerticalAlignment="Top" Width="82"/>
+
+  </Grid>
 </Window>
