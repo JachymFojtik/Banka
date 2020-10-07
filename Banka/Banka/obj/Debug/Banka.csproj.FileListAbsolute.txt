@@ -1,0 +1,15 @@
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\bin\Debug\Banka.exe.config
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\bin\Debug\Banka.exe
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\bin\Debug\Banka.pdb
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\MainWindow.g.cs
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\App.g.cs
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka_MarkupCompile.cache
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka_MarkupCompile.lref
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\MainWindow.baml
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka.g.resources
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka.Properties.Resources.resources
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka.csproj.GenerateResource.cache
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka.exe
+C:\Users\HP\Desktop\Banka-eea5dfa15caa030f30ce04bc82413eaeaf59564f\Banka\obj\Debug\Banka.pdb
