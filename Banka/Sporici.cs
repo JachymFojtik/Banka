@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Banka
 {
@@ -17,6 +18,23 @@ namespace Banka
         {
             Jmeno = jmeno;
             Zustatek = 0;
+        }
+        public override void Vybrat(string s)
+        {
+            try
+            {
+                int i = int.Parse(s);
+                if (i > Zustatek)
+                {
+                    MessageBox.Show("SPOŘÍCÍ a STUDENTSKÝ ÚČET neumožňuje jít do mínusu");
+                }
+                else Zustatek -= i;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Špatný formát");
+            }
+
         }
     }
 }

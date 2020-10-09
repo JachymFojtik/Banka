@@ -5,34 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Banka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
-    <Grid Background="#FF008CFF">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+        Title="MainWindow" Height="450" Width="700">
+    <Grid Background="#FF1BFF04">
+        <Button x:Name="bPridat" Content="Přidat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="51,86,0,0" Click="bPridat_Click" FontWeight="Bold"/>
+        <TextBox x:Name="tbPridat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="51,38,0,0" FontWeight="Bold"/>
+        <ListBox x:Name="lbUcty" HorizontalAlignment="Left" Height="211" VerticalAlignment="Top" Width="157" Margin="252,38,0,0" SelectionChanged="LbUcty_SelectionChanged" FontWeight="Bold"></ListBox>
 
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+        <Label x:Name="lZustatek" Content="Zůstatek: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="423,88,0,0" FontWeight="Bold"/>
+        <ComboBox x:Name="cbCisla" HorizontalAlignment="Left" VerticalAlignment="Top" Width="57" Margin="51,130,0,0" IsEditable="True" SelectedIndex="0" FontWeight="Bold"/>
 
-
-        </Grid.RowDefinitions>
-        <Button x:Name="bPridat" Content="Přidat"  VerticalAlignment="Bottom" Width="50.8"  Click="bPridat_Click" MinWidth="50"/>
-        <TextBox x:Name="tbPridat"  Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center"  Width="120.8" Grid.Row="0" Grid.Column="0" MinWidth="100"/>
-        <ListBox x:Name="lbUcty" VerticalAlignment="Center" Grid.Column="2" SelectionChanged="LbUcty_SelectionChanged" Grid.RowSpan="2" Height="200" MinHeight="150" Background="#FFD40D0D"/>
-
-
-        <Label x:Name="lZustatek" Content="Zůstatek: " Grid.Column="1" MinWidth="50" MinHeight="50" HorizontalAlignment="Right" />
-        <ComboBox x:Name="cbCisla" HorizontalAlignment="Left" VerticalAlignment="Top" Width="57" Margin="51,130,0,0"></ComboBox>
-
-        <Button x:Name="bCas" Content="Posunout čas" HorizontalAlignment="Left" Margin="120,132,0,0" VerticalAlignment="Top" Width="82" Click="bCas_Click"/>
-        <Label x:Name="lNazev" Content="Název účtu: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,38,0,0"/>
-        <Button x:Name="bVybrat" Content="Vybrat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="144,86,0,0" Click="bVybrat_Click"/>
+        <Button x:Name="bCas" Content="Posunout čas" HorizontalAlignment="Left" Margin="120,132,0,0" VerticalAlignment="Top" Width="82" Click="bCas_Click" FontWeight="Bold"/>
+        <Label x:Name="lNazev" Content="Název účtu: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="423,55,0,0" FontWeight="Bold"/>
+        <Button x:Name="bVybrat" Content="Vybrat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="144,86,0,0" Click="bVybrat_Click" FontWeight="Bold"/>
+        <Label x:Name="lDatum" Content="Aktuální Datum: " HorizontalAlignment="Left" Margin="423,119,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
     </Grid>
 </Window>
