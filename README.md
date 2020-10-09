@@ -1,10 +1,11 @@
 # Banka
-+ Adding the basic class + props
-+ Adding the counting method
++ Advanced frontend - desing + buttons + labels
++ Adding the basic class + props - DONE
++ Adding the counting method - DONE
 + Test methods
 + Implementing innerworking of the bank accounts / Debit / Kredit
-+ Adding textbox
-+ Basic commands for textbox
++ Adding textbox - DONE
++ Basic commands for textbox - DONE BUT NOT FOR THE FRONTEND
 
 
 
