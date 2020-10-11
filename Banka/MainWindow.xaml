@@ -18,6 +18,8 @@
         <Label x:Name="lNazev" Content="Název účtu: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="423,55,0,0" FontWeight="Bold"/>
         <Button x:Name="bVybrat" Content="Vybrat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="144,86,0,0" Click="bVybrat_Click" FontWeight="Bold"/>
         <Label x:Name="lDatum" Content="Aktuální Datum: " HorizontalAlignment="Left" Margin="423,119,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button Content="Nemáte účet? Zaregistrujte se zde" HorizontalAlignment="Left" Margin="448,190,0,0" VerticalAlignment="Top" Width="196" Height="59" Click="Button_Click"/>
 
     </Grid>
 </Window>
+

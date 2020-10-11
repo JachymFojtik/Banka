@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,38 @@ namespace Banka
         {
             InitializeComponent();
 
+            List<string> Data = new List<string>();
+            try
+            {
+                string[] f = File.ReadAllLines("ucty.txt");
+                foreach (var item in f)
+                {
+                    Data.Add(item);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Databáze účtů nenalezena");
+            }
+
+            foreach (var item in Data)
+            {
+                string[] s = item.Split('-');
+                switch (s[0])
+                {
+                    case "Spořící":
+                        Ucty.Add(new Sporici(s[1], int.Parse(s[2])));
+                        break;
+                    case "Úvěrový":
+                        Ucty.Add(new Uverovy(s[1], int.Parse(s[2])));
+                        break;
+                    case "Studentský":
+                        Ucty.Add(new Studentsky(s[1], int.Parse(s[2])));
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             Studentsky stud1 = new Studentsky("Honza", 100);
             Uverovy s2 = new Uverovy("Petr", 500);
@@ -35,7 +68,6 @@ namespace Banka
             Ucty.Add(s1);
             Ucty.Add(s2);
             Ucty.Add(stud1);
-
 
             lDatum.Content = $"Aktuální datum: {datum.ToString("dd. MMMM yyyy")}";
 
@@ -136,6 +168,13 @@ namespace Banka
 
             }
             else MessageBox.Show("Vyberte účet, ze kterého vybíráte");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RegWin Reg = new RegWin();
+            Reg.Show();
+            Close();
         }
     }
 

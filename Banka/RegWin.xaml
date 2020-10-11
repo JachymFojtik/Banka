@@ -1,0 +1,19 @@
+﻿<Window x:Class="Banka.RegWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Banka"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="700">
+    <Grid>
+        <TextBox x:Name="tbJmeno" HorizontalAlignment="Left" Height="23" Margin="253,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Založit účet" HorizontalAlignment="Left" Margin="93,129,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <ComboBox x:Name="cbTyp" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="93,78,0,0" SelectedIndex="1" IsSynchronizedWithCurrentItem="True"/>
+        <TextBox x:Name="tbVklad" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="434,78,0,0"/>
+        <Label Content="Vklad" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="434,47,0,0"/>
+        <Label Content="Jméno" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="253,47,0,0"/>
+        <Label Content="Typ účtu" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,47,0,0"/>
+
+    </Grid>
+</Window>
