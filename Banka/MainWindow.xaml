@@ -5,25 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Banka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Icon="B-icon.png">
-    <Grid Background="#FF1BFF04">
-       
-        <Button x:Name="bPridat" Content="Přidat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="51,86,0,0" Click="bPridat_Click" FontWeight="Bold"/>
-        <TextBox x:Name="tbPridat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="51,38,0,0" FontWeight="Bold"/>
-        <ListBox x:Name="lbUcty" HorizontalAlignment="Left" Height="211" VerticalAlignment="Top" Width="157" Margin="252,38,0,0" SelectionChanged="LbUcty_SelectionChanged" FontWeight="Bold"></ListBox>
+        Title="Banka" Height="340.047" Width="1000" Icon="B-icon.png" AutomationProperties.Name="Hlavní" FontSize="16" FontFamily="Tahoma" FontWeight="Bold" MinWidth="575" MinHeight="340.047">
+    <Grid Background="#FF13D3DC">
+        <Grid.ColumnDefinitions>
 
-        <Label x:Name="lZustatek" Content="Zůstatek: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="423,119,0,0" FontWeight="Bold"/>
-        <ComboBox x:Name="cbDny" HorizontalAlignment="Left" VerticalAlignment="Top" Width="57" Margin="51,130,0,0" IsEditable="True" SelectedIndex="0" FontWeight="Bold"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
 
-        <Button x:Name="bCas" Content="Přeskočit dny" HorizontalAlignment="Left" Margin="120,132,0,0" VerticalAlignment="Top" Width="82" Click="bCas_Click" FontWeight="Bold"/>
-        <Label x:Name="lNazev" Content="Název účtu: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="423,88,0,0" FontWeight="Bold"/>
-        <Button x:Name="bVybrat" Content="Vybrat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="144,86,0,0" Click="bVybrat_Click" FontWeight="Bold"/>
-        <Label x:Name="lDatum" Content="Aktuální Datum: " HorizontalAlignment="Left" Margin="423,150,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button Content="Nemáte účet? Zaregistrujte se zde" HorizontalAlignment="Left" Margin="448,190,0,0" VerticalAlignment="Top" Width="196" Height="59" Click="Button_Click"/>
-        <Label x:Name="lTyp" FontSize="16" Content="Typ účtu: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="424,57,0,0" FontWeight="Bold"/>
-        <ComboBox x:Name="cbMesic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="57" Margin="51,159,0,0" IsEditable="True" SelectedIndex="0" FontWeight="Bold"/>
-        <Button x:Name="bMesic" Content="Přeskočit měsíce" HorizontalAlignment="Left" Margin="120,161,0,0" VerticalAlignment="Top" Width="99" Click="bMesic_Click" FontWeight="Bold"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
 
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Button Background="White" BorderThickness="2" BorderBrush="Gray" x:Name="bPridat" Content="Přidat"  Width="75" Click="bPridat_Click" FontWeight="Bold" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0
+                " Foreground="#FF13D3DC"/>
+        <TextBox BorderThickness="2" BorderBrush="Gray" x:Name="tbPridat"  Height="25" TextWrapping="Wrap" Text="" Width="168" FontWeight="Bold" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ListBox BorderThickness="2" BorderBrush="Gray" x:Name="lbUcty"  Height="235"  Width="157" SelectionChanged="LbUcty_SelectionChanged" FontWeight="Bold" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF13D3DC"></ListBox>
+        <Label x:Name="lZustatek" Content="Zůstatek: "   FontWeight="Bold" Grid.Column="2" Grid.Row="3" Background="#FF13D3DC" Foreground="White"/>
+        <ComboBox BorderThickness="2" BorderBrush="Gray" x:Name="cbDny" Width="75" IsEditable="True" SelectedIndex="0" FontWeight="Bold" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#FF13D3DC"/>
+        <Button BorderBrush="Gray" BorderThickness="2" Background="White" x:Name="bCas" Content="Přeskočit dny" Width="120" Click="bCas_Click" FontWeight="Bold" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF13D3DC" Margin="0,0,10,0"/>
+        <Label x:Name="lNazev" Content="Název účtu: " FontWeight="Bold" Grid.Column="2" Grid.Row="2" Foreground="White"/>
+        <Button Grid.Column="0" Grid.Row="2" Background="White" BorderThickness="2" BorderBrush="Gray" x:Name="bVybrat" Content="Vybrat" HorizontalAlignment="Right"  Width="75"  Click="bVybrat_Click" FontWeight="Bold" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="#FF13D3DC" />
+        <Label x:Name="lDatum" Content="Aktuální Datum: " FontWeight="Bold" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Foreground="White"/>
+        <Button BorderThickness="2" BorderBrush="Gray" Content="Registrace" Click="Button_Click" Grid.Column="0" Grid.Row="6" Grid.RowSpan="2" Margin="10,0,0,10" Background="White" Foreground="#FF13D3DC"/>
+        <Label x:Name="lTyp" FontSize="16" Content="Typ účtu: " FontWeight="Bold" Grid.ColumnSpan="2" Foreground="White" Grid.Column="2" Grid.Row="1"/>
+        <ComboBox BorderThickness="2" BorderBrush="Gray" x:Name="cbMesic" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75"  IsEditable="True" SelectedIndex="0" FontWeight="Bold" Grid.Column="0" Grid.Row="4" Margin="10,0,0,0" Foreground="#FF13D3DC"></ComboBox>
+        <Button BorderThickness="1" BorderBrush="Gray" x:Name="bMesic" Content="Přeskočit měsíce" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Click="bMesic_Click" FontWeight="Bold" Grid.Column="0" Grid.Row="4" Background="White" Foreground="#FF13D3DC" Margin="0,0,10,0"/>
     </Grid>
 </Window>
 
