@@ -9,6 +9,7 @@ namespace Banka
 {
     public class Sporici : Ucet
     {
+        private DateTime MonthNow;
         public Sporici(string jmeno, decimal z)
         {
             Jmeno = jmeno;

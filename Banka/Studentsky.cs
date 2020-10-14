@@ -23,14 +23,14 @@ namespace Banka
             Zustatek = 0;
             vybranoDnes = false;
         }
-        public void VybratS(string s, DateTime d)
+        public void Vybrat(string s, DateTime d)
         {
             if (d.Day == dnes.Day)
                 MessageBox.Show("Skrze STUDENTSKÝ ÚČET lze vybrat pouze 1x denně");
 
             else
                 Vybrat(s);
-            dnes = d;
+                dnes = d;
         }
     }
 

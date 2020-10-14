@@ -63,7 +63,7 @@ namespace Banka
 
             Studentsky stud1 = new Studentsky("Honza", 100);
             Uverovy s2 = new Uverovy("Petr", 500);
-            Sporici s1 = new Sporici("Jachym");
+            Sporici s1 = new Sporici("Jachym",400);
 
             Ucty.Add(s1);
             Ucty.Add(s2);
@@ -73,7 +73,11 @@ namespace Banka
 
             for (int i = 1; i <= 31; i++)
             {
-                cbCisla.Items.Add(i);
+                cbDny.Items.Add(i);
+                if (i<=12)
+                {
+                    cbMesic.Items.Add(i);
+                }
             }
 
             foreach (var inst in Ucty)
@@ -85,6 +89,7 @@ namespace Banka
             {
                 vyber = lbUcty.SelectedItem.ToString();
                 lNazev.Content = $"Název účtu: {vyber}";
+
             }
             catch (Exception)
             {
@@ -101,7 +106,23 @@ namespace Banka
                 if (inst.Jmeno == lbUcty.SelectedItem.ToString())
                 {
                     lZustatek.Content = "Zůstatek: " + inst.Zustatek.ToString();
+                    switch (inst.GetType().ToString())
+                    {
+                        case "Banka.Sporici":
+                            lTyp.Content = $"Typ účtu: Spořící (sazba = {Ucet.Sazba})";
+                            break;
+                        case "Banka.Studentsky":
+                            lTyp.Content = $"Typ účtu: Studentský (sazba = {Ucet.Sazba})";
+                            break;
+                        case "Banka.Uverovy":
+                            lTyp.Content = $"Typ účtu: Úvěrový (sazba = {Ucet.Sazba})";
+                            break;
+                        default:
+                            lTyp.Content = $"Typ účtu: ERROR";
+                            break;
+                    }
                 }
+
             }
         }
 
@@ -131,7 +152,7 @@ namespace Banka
         {
             try
             {
-                datum = datum.AddDays(int.Parse(cbCisla.SelectedItem.ToString()));
+                datum = datum.AddDays(int.Parse(cbDny.SelectedItem.ToString()));
                 lDatum.Content = $"Aktuální datum: {datum.ToString("dd. MMMM yyyy")}";
             }
             catch (Exception)
@@ -152,13 +173,11 @@ namespace Banka
                         if (inst is Studentsky)
                         {
                             Studentsky s = (Studentsky)inst;
-                            s.VybratS(tbPridat.Text, datum);
+                            s.Vybrat(tbPridat.Text, datum);
 
                         }
-                        else
-                        {
-                            inst.Vybrat(tbPridat.Text);
-                        }
+                        else inst.Vybrat(tbPridat.Text);
+
                         lZustatek.Content = "Zůstatek: " + inst.Zustatek.ToString();
                         break;
 
@@ -176,10 +195,44 @@ namespace Banka
             Reg.Show();
             Close();
         }
+        private void NovyMesic(List<Ucet> lUcty)
+        {
+            foreach (var ucet in lUcty)
+            {
+                if (ucet is Uverovy)
+                {
+                    ucet.Zustatek -= Math.Round((decimal)Ucet.Sazba * ucet.Zustatek, 2);
+                }
+                else
+                {
+                    ucet.Zustatek += Math.Round((decimal)Ucet.Sazba * ucet.Zustatek,2);
+                }
+                if (lbUcty.SelectedItem.ToString() == ucet.Jmeno)
+                {
+                    lZustatek.Content = "Zůstatek: " + ucet.Zustatek.ToString();
+                }
+            }
+
+        }
+
+        private void bMesic_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                datum = datum.AddMonths(int.Parse(cbMesic.SelectedItem.ToString()));
+                lDatum.Content = $"Aktuální datum: {datum.ToString("dd. MMMM yyyy")}";
+                NovyMesic(Ucty);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Vyberte, o kolik dní chcete čas posunout");
+            }
+        }
     }
 
     public class Ucet//done
     {
+        public static double Sazba = 0.02; //stejná u úrokového i spořícího
         public decimal Zustatek { get; set; }
         public string Jmeno { get; set; }
 
