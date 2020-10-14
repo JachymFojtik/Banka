@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Banka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Icon="B-icon.png">
     <Grid Background="#FF1BFF04">
+       
         <Button x:Name="bPridat" Content="Přidat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="51,86,0,0" Click="bPridat_Click" FontWeight="Bold"/>
         <TextBox x:Name="tbPridat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="51,38,0,0" FontWeight="Bold"/>
         <ListBox x:Name="lbUcty" HorizontalAlignment="Left" Height="211" VerticalAlignment="Top" Width="157" Margin="252,38,0,0" SelectionChanged="LbUcty_SelectionChanged" FontWeight="Bold"></ListBox>

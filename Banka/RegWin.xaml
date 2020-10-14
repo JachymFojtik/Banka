@@ -1,19 +1,39 @@
-﻿<Window x:Class="Banka.RegWin"
+﻿<Window x:Name="VýběrovéOkno" x:Class="Banka.RegWin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Banka"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="700">
-    <Grid>
-        <TextBox x:Name="tbJmeno" HorizontalAlignment="Left" Height="23" Margin="253,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Založit účet" HorizontalAlignment="Left" Margin="93,129,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="cbTyp" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="93,78,0,0" SelectedIndex="1" IsSynchronizedWithCurrentItem="True"/>
-        <TextBox x:Name="tbVklad" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="434,78,0,0"/>
-        <Label Content="Vklad" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="434,47,0,0"/>
-        <Label Content="Jméno" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="253,47,0,0"/>
-        <Label Content="Typ účtu" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,47,0,0"/>
+        Title="Výběr" Height="263.328" Width="318.138" Icon="B-icon.png">
+    <Grid Background="#FF13D3DC">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <TextBox BorderThickness="2" BorderBrush="Gray" x:Name="tbJmeno"  Height="25" Width="120" Grid.Row="1" Text="Test" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="26,0,0,5" FontSize="16" Foreground="#FF13D3DC" />
+        <Button BorderThickness="2" BorderBrush="Gray" Content="Založit účet" Grid.Row="1" Grid.Column="1" Width="75" Height="30" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,26,0" Foreground="#FF13D3DC" FontFamily="Tahoma" FontWeight="Bold"/>
+        <ComboBox BorderThickness="2" BorderBrush="Gray" x:Name="cbTyp" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  SelectedIndex="1" IsSynchronizedWithCurrentItem="True" Margin="26,0,0,5" FontSize="16" Foreground="#FF13D3DC" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <TextBox BorderThickness="2" BorderBrush="Gray" Text="100 " x:Name="tbVklad" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" TextWrapping="Wrap" Width="120" FontSize="16" Margin="25,0,0,5" Foreground="#FF13D3DC"/>
+        <Label Content="Vklad :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="25,5,0,0" FontSize="14" Foreground="White" FontWeight="Bold" FontFamily="Tahoma"/>
+        <Label Content="Jmeno :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" Margin="25,5,0,0" FontSize="14" Foreground="White" FontWeight="Bold" FontFamily="Tahoma"/>
+        <Label Content="Typ účtu :" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,0,0,0" RenderTransformOrigin="1.234,0.767" FontSize="14" BorderBrush="#FFB21616" Foreground="White" FontWeight="Bold" FontFamily="Tahoma"/>
 
     </Grid>
 </Window>
