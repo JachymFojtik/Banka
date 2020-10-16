@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Banka"
         mc:Ignorable="d"
-        Title="Banka" Height="340.047" Width="1000" Icon="B-icon.png" AutomationProperties.Name="Hlavní" FontSize="16" FontFamily="Tahoma" FontWeight="Bold" MinWidth="575" MinHeight="340.047">
+        Title="Banka" Height="340.047" Width="1000" Icon="B-icon.png" AutomationProperties.Name="Hlavní" FontSize="16" FontFamily="Tahoma" FontWeight="Bold" MinWidth="850" MinHeight="340.047">
     <Grid Background="#FF13D3DC">
         <Grid.ColumnDefinitions>
 

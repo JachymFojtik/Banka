@@ -109,13 +109,13 @@ namespace Banka
                     switch (inst.GetType().ToString())
                     {
                         case "Banka.Sporici":
-                            lTyp.Content = $"Typ účtu: Spořící (sazba = {Ucet.Sazba})";
+                            lTyp.Content = $"Typ účtu: Spořící (sazba = {Ucet.Sazba * 100} p. a.)";
                             break;
                         case "Banka.Studentsky":
-                            lTyp.Content = $"Typ účtu: Studentský (sazba = {Ucet.Sazba})";
+                            lTyp.Content = $"Typ účtu: Studentský (sazba = {Ucet.Sazba * 100} p. a.)";
                             break;
                         case "Banka.Uverovy":
-                            lTyp.Content = $"Typ účtu: Úvěrový (sazba = {Ucet.Sazba})";
+                            lTyp.Content = $"Typ účtu: Úvěrový (sazba = {Ucet.Sazba * 100} p. a.)";
                             break;
                         default:
                             lTyp.Content = $"Typ účtu: ERROR";
@@ -132,16 +132,12 @@ namespace Banka
             {
                 foreach (var inst in Ucty)
                 {
-
-
                     if (inst.Jmeno == lbUcty.SelectedItem.ToString())
                     {
                         inst.Pridat(tbPridat.Text);
                         lZustatek.Content = "Zůstatek: " + inst.Zustatek.ToString();
                         break;
                     }
-
-
                 }
             }
             else MessageBox.Show("Vyberte účet, kam vkládáte");
@@ -195,17 +191,17 @@ namespace Banka
             Reg.Show();
             Close();
         }
-        private void NovyMesic(List<Ucet> lUcty)
+        private void NovyMesic(List<Ucet> lUcty, int pocetMesicu)
         {
             foreach (var ucet in lUcty)
             {
                 if (ucet is Uverovy)
                 {
-                    ucet.Zustatek -= Math.Round((decimal)Ucet.Sazba * ucet.Zustatek, 2);
+                    //Tady napiš tu operaci jak se to úrokuje==============================================================================================================
                 }
                 else
                 {
-                    ucet.Zustatek += Math.Round((decimal)Ucet.Sazba * ucet.Zustatek,2);
+                    ucet.Zustatek += Math.Round((decimal)Ucet.Sazba * ucet.Zustatek* pocetMesicu,2) ;
                 }
                 if (lbUcty.SelectedItem.ToString() == ucet.Jmeno)
                 {
@@ -219,9 +215,10 @@ namespace Banka
         {
             try
             {
-                datum = datum.AddMonths(int.Parse(cbMesic.SelectedItem.ToString()));
+                int pocetMesicu = int.Parse(cbMesic.SelectedItem.ToString());
+                datum = datum.AddMonths(pocetMesicu);
                 lDatum.Content = $"Aktuální datum: {datum.ToString("dd. MMMM yyyy")}";
-                NovyMesic(Ucty);
+                NovyMesic(Ucty,pocetMesicu);
             }
             catch (Exception)
             {
