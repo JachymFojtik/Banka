@@ -18,9 +18,14 @@ namespace Banka
 {
     /// <summary>
     /// Interakční logika pro MainWindow.xaml
-    /// </summary>
+    /// </summary> 
+    public enum Proces
+        {
+            Vklad,Vyber
+        }
     public partial class MainWindow : Window
     {
+ 
         public List<Ucet> Ucty = new List<Ucet>();
         public DateTime datum = DateTime.Now;
         public string vyber;
@@ -106,6 +111,7 @@ namespace Banka
                 if (inst.Jmeno == lbUcty.SelectedItem.ToString())
                 {
                     lZustatek.Content = "Zůstatek: " + inst.Zustatek.ToString();
+                    docBar.Content = inst.Dokumentace;
                     switch (inst.GetType().ToString())
                     {
                         case "Banka.Sporici":
@@ -121,6 +127,7 @@ namespace Banka
                             lTyp.Content = $"Typ účtu: ERROR";
                             break;
                     }
+                    docBar.Content = inst.Dokumentace;
                 }
 
             }
@@ -136,6 +143,9 @@ namespace Banka
                     {
                         inst.Pridat(tbPridat.Text);
                         lZustatek.Content = "Zůstatek: " + inst.Zustatek.ToString();
+
+                        inst.Dokumentace_Zustatek(Proces.Vklad, tbPridat.Text);
+                        docBar.Content = inst.Dokumentace;
                         break;
                     }
                 }
@@ -144,12 +154,29 @@ namespace Banka
 
         }
 
-        private void bCas_Click(object sender, RoutedEventArgs e)//DONE
+        private void bCas_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                DateTime d = datum;
                 datum = datum.AddDays(int.Parse(cbDny.SelectedItem.ToString()));
                 lDatum.Content = $"Aktuální datum: {datum.ToString("dd. MMMM yyyy")}";
+                foreach (Ucet ucet in Ucty)
+                {
+                    ucet.Dokumentace_Cas(datum);
+                    if (lbUcty.SelectedItem != null)
+                    {
+                        if (ucet.Jmeno == lbUcty.SelectedItem.ToString())
+                        {
+                            docBar.Content = ucet.Dokumentace;
+                        }
+                    }
+                }
+                if (d.Month != datum.Month)
+                {
+                    NovyMesic(Ucty, 1);
+                }
+
             }
             catch (Exception)
             {
@@ -157,7 +184,7 @@ namespace Banka
             }
 
         }
-        private void bVybrat_Click(object sender, RoutedEventArgs e)//DONE
+        private void bVybrat_Click(object sender, RoutedEventArgs e)
         {
 
             if (lbUcty.SelectedItem != null)
@@ -175,6 +202,8 @@ namespace Banka
                         else inst.Vybrat(tbPridat.Text);
 
                         lZustatek.Content = "Zůstatek: " + inst.Zustatek.ToString();
+                        inst.Dokumentace_Zustatek(Proces.Vyber, tbPridat.Text);
+                        docBar.Content = inst.Dokumentace;
                         break;
 
                     }
@@ -201,14 +230,24 @@ namespace Banka
                 }
                 else
                 {
-                    ucet.Zustatek += Math.Round((decimal)Ucet.Sazba * ucet.Zustatek* pocetMesicu,2) ;
+                    decimal i = (decimal)Ucet.Sazba * ucet.Zustatek * pocetMesicu;
+                    ucet.Zustatek += Math.Round(i,2) ;
                 }
-                if (lbUcty.SelectedItem.ToString() == ucet.Jmeno)
+
+                ucet.Dokumentace_Cas(datum);
+                ucet.Dokumentace += $"+{Ucet.Sazba * 100}/12 -> Zůstatek = {ucet.Zustatek}";
+
+                if (lbUcty.SelectedItem != null)
                 {
-                    lZustatek.Content = "Zůstatek: " + ucet.Zustatek.ToString();
+                    if (lbUcty.SelectedItem.ToString() == ucet.Jmeno)
+                    {
+                        lZustatek.Content = "Zůstatek: " + ucet.Zustatek.ToString();
+                        docBar.Content = ucet.Dokumentace;
+                    }
+
+                
                 }
             }
-
         }
 
         private void bMesic_Click(object sender, RoutedEventArgs e)
@@ -220,11 +259,11 @@ namespace Banka
                 lDatum.Content = $"Aktuální datum: {datum.ToString("dd. MMMM yyyy")}";
                 NovyMesic(Ucty,pocetMesicu);
             }
-            catch (Exception)
+            catch (FormatException)
             {
                 MessageBox.Show("Vyberte, o kolik dní chcete čas posunout");
             }
-        }
+        }         
     }
 
     public class Ucet//done
@@ -232,6 +271,30 @@ namespace Banka
         public static double Sazba = 0.02; //stejná u úrokového i spořícího
         public decimal Zustatek { get; set; }
         public string Jmeno { get; set; }
+        public string Dokumentace = $"={DateTime.Now.ToString("dd. MMMM yyyy")}======";
+
+        public virtual void Dokumentace_Zustatek(Proces proces, string s)
+        {
+            int i = int.Parse(s);
+            Dokumentace += $"\n";
+            switch (proces)
+            {
+                case Proces.Vklad:
+                    Dokumentace += $"Vklad {i} ";
+                    break;
+                case Proces.Vyber:
+                    Dokumentace += $"Výběr {i} ";
+                    break;
+            }
+            Dokumentace += $"-> Zůstatek = {Zustatek} ";
+        }
+
+        public virtual void Dokumentace_Cas(DateTime d)
+        {
+            Dokumentace += $"\n";
+            Dokumentace += $"={d.ToString("dd. MMMM yyyy")}======\n";
+        }
+
 
         public virtual void Pridat(string s)
         {
@@ -245,6 +308,7 @@ namespace Banka
                 MessageBox.Show("Špatný formát");
             }
         }
+
         public virtual void Vybrat(string s)
         {
             try
