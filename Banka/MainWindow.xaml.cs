@@ -53,13 +53,17 @@ namespace Banka
                 switch (s[0])
                 {
                     case "Spořící":
-                        Ucty.Add(new Sporici(s[1], int.Parse(s[2])));
+                        Ucty.Add(new Sporici(s[1], 
+                            int.Parse(s[2])));
                         break;
                     case "Úvěrový":
-                        Ucty.Add(new Uverovy(s[1], int.Parse(s[2])));
+                        Ucty.Add(new Uverovy(s[1], 
+                            int.Parse(s[2]),
+                            int.Parse(s[3])));
                         break;
                     case "Studentský":
-                        Ucty.Add(new Studentsky(s[1], int.Parse(s[2])));
+                        Ucty.Add(new Studentsky(s[1], 
+                            int.Parse(s[2])));
                         break;
                     default:
                         break;
@@ -67,7 +71,7 @@ namespace Banka
             }
 
             Studentsky stud1 = new Studentsky("Honza", 100);
-            Uverovy s2 = new Uverovy("Petr", 500);
+            Uverovy s2 = new Uverovy("Petr", 500,3);
             Sporici s1 = new Sporici("Jachym",400);
 
             Ucty.Add(s1);
@@ -115,13 +119,13 @@ namespace Banka
                     switch (inst.GetType().ToString())
                     {
                         case "Banka.Sporici":
-                            lTyp.Content = $"Typ účtu: Spořící (sazba = {Ucet.Sazba * 100} p. a.)";
+                            lTyp.Content = $"Typ účtu: Spořící (sazba = {Sporici.Sazba} měsíčně)";
                             break;
                         case "Banka.Studentsky":
-                            lTyp.Content = $"Typ účtu: Studentský (sazba = {Ucet.Sazba * 100} p. a.)";
+                            lTyp.Content = $"Typ účtu: Studentský (sazba = {Sporici.Sazba} měsíčně)";
                             break;
                         case "Banka.Uverovy":
-                            lTyp.Content = $"Typ účtu: Úvěrový (sazba = {Ucet.Sazba * 100} p. a.)";
+                            lTyp.Content = $"Typ účtu: Úvěrový (sazba = {Uverovy.Sazba} měsíčně)";
                             break;
                         default:
                             lTyp.Content = $"Typ účtu: ERROR";
@@ -142,7 +146,7 @@ namespace Banka
                     if (inst.Jmeno == lbUcty.SelectedItem.ToString())
                     {
                         inst.Pridat(tbPridat.Text);
-                        lZustatek.Content = "Zůstatek: " + inst.Zustatek.ToString();
+                        lZustatek.Content = "Zůstatek: " + Math.Round(inst.Zustatek, 2).ToString();
 
                         inst.Dokumentace_Zustatek(Proces.Vklad, tbPridat.Text);
                         docBar.Content = inst.Dokumentace;
@@ -224,18 +228,35 @@ namespace Banka
         {
             foreach (var ucet in lUcty)
             {
+                ucet.Dokumentace_Cas(datum);
+
                 if (ucet is Uverovy)
                 {
-                    //Tady napiš tu operaci jak se to úrokuje==============================================================================================================
+                    Uverovy u = ucet as Uverovy;
+                    //u.ZbyvaSplatit -= pocetMesicu;
+                    ucet.Zustatek = Uverovy.Mesic(ucet as Uverovy,pocetMesicu);
+                    if (u.ZbyvaSplatit >= 0)
+                    {
+                        ucet.Dokumentace += $"-{ucet.Anuita}, zbývá {u.ZbyvaSplatit} měsíců->";
+                    }
+
+
+                    ucet.Dokumentace += $"Zůstatek = {Math.Round(u.Zustatek, 2)}";
                 }
                 else
                 {
-                    decimal i = (decimal)Ucet.Sazba * ucet.Zustatek * pocetMesicu;
-                    ucet.Zustatek += Math.Round(i,2) ;
+
+                    for (int i = 1; i <= pocetMesicu; i++)
+                    {
+                        double u = (double)Sporici.Sazba * ucet.Zustatek;
+                        ucet.Zustatek += Math.Round(u,2) ;
+                        ucet.Dokumentace += $"+{Sporici.Sazba * 100}% za měsíc -> Zůstatek = {Math.Round(ucet.Zustatek, 2)}";
+                    }
+
                 }
 
-                ucet.Dokumentace_Cas(datum);
-                ucet.Dokumentace += $"+{Ucet.Sazba * 100}/12 -> Zůstatek = {ucet.Zustatek}";
+
+
 
                 if (lbUcty.SelectedItem != null)
                 {
@@ -268,8 +289,8 @@ namespace Banka
 
     public class Ucet//done
     {
-        public static double Sazba = 0.02; //stejná u úrokového i spořícího
-        public decimal Zustatek { get; set; }
+        public double Anuita { get; set; } //Měsíční splátka
+        public double Zustatek { get; set; }
         public string Jmeno { get; set; }
         public string Dokumentace = $"={DateTime.Now.ToString("dd. MMMM yyyy")}======";
 
@@ -286,7 +307,7 @@ namespace Banka
                     Dokumentace += $"Výběr {i} ";
                     break;
             }
-            Dokumentace += $"-> Zůstatek = {Zustatek} ";
+            Dokumentace += $"-> Zůstatek = {Math.Round(Zustatek,2)}";
         }
 
         public virtual void Dokumentace_Cas(DateTime d)
@@ -320,6 +341,11 @@ namespace Banka
             {
                 MessageBox.Show("Špatný formát");
             }
+        }
+
+        public virtual double Mesic()
+        {
+            return 1;
         }
     }
 

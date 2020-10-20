@@ -48,8 +48,32 @@ namespace Banka
             bool vklad_JeInt = int.TryParse(tbVklad.Text, out vklad);
             if (vklad_JeInt)
             {
-                string s = $"{cbTyp.SelectedItem}-{tbJmeno.Text}-{vklad}";
-                Ucty.Add(s);
+                if (cbTyp.SelectedItem == "Úvěrový")
+                {
+                    try
+                    {
+                        int i = Math.Abs(int.Parse(tbDobaSplatky.Text));
+                        if (tbJmeno.Text == "")
+                        {
+                            MessageBox.Show("Zadejte jméno účtu");
+                        }
+                        string s = $"{cbTyp.SelectedItem}-{tbJmeno.Text}-{vklad}-{i}";
+                        Ucty.Add(s);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Doba splátky je číslo");
+                    }
+
+
+                }
+                else
+                {
+                    string s = $"{cbTyp.SelectedItem}-{tbJmeno.Text}-{vklad}";
+                    Ucty.Add(s);
+                }
+
+
                 File.WriteAllLines("ucty.txt", Ucty);
                 MainWindow main = new MainWindow();
                 main.Show();
@@ -60,6 +84,20 @@ namespace Banka
                 MessageBox.Show("Vklad je ve ve špatném formátu");
             }
 
+        }
+
+        private void CbTyp_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbTyp.SelectedItem == "Úvěrový")
+            {
+                label1.Visibility = Visibility.Visible;
+                tbDobaSplatky.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                label1.Visibility = Visibility.Hidden;
+                tbDobaSplatky.Visibility = Visibility.Hidden;   
+            } 
         }
     }
 }

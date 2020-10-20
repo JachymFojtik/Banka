@@ -9,15 +9,13 @@ namespace Banka
 {
     public class Sporici : Ucet
     {
-        public Sporici(string jmeno, decimal z)
+        public double Anuita { get; set; }
+        public static double Sazba { get; set; }
+        public Sporici(string jmeno, double z)
         {
+            Sazba = 0.02;
             Jmeno = jmeno;
             Zustatek = z;
-        }
-        public Sporici(string jmeno)
-        {
-            Jmeno = jmeno;
-            Zustatek = 0;
         }
         public override void Vybrat(string s)
         {

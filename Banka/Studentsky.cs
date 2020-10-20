@@ -11,16 +11,10 @@ namespace Banka
     {
         private DateTime dnes;
         public bool vybranoDnes = false;
-        public Studentsky(string jmeno, decimal z) : base(jmeno, z)
+        public Studentsky(string jmeno, double z) : base(jmeno, z)
         {
             Jmeno = jmeno;
             Zustatek = z;
-            vybranoDnes = false;
-        }
-        public Studentsky(string jmeno) : base(jmeno)
-        {
-            Jmeno = jmeno;
-            Zustatek = 0;
             vybranoDnes = false;
         }
         public void Vybrat(string s, DateTime d)
