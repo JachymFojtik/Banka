@@ -28,7 +28,7 @@
 
         </Grid.RowDefinitions>
         <Button Background="White" BorderThickness="2" BorderBrush="Gray" x:Name="bPridat" Content="Vložit"  Width="75" Click="bPridat_Click" FontWeight="Bold" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="-100,0,0,0" Foreground="#FF13D3DC"/>
-        <TextBox BorderThickness="2" BorderBrush="Gray" x:Name="tbPridat"  Height="25" TextWrapping="Wrap" Text="" Width="168" FontWeight="Bold" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox BorderThickness="2" BorderBrush="Gray" x:Name="tbPridat"  Height="25" TextWrapping="Wrap" Text="" Width="168" FontWeight="Bold" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF13D3DC"/>
         <ListBox BorderThickness="2" BorderBrush="Gray" x:Name="lbUcty"  Height="235"  Width="157" SelectionChanged="LbUcty_SelectionChanged" FontWeight="Bold" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF13D3DC"></ListBox>
         <Label x:Name="lZustatek" Content="Zůstatek: "   FontWeight="Bold" Grid.Column="2" Grid.Row="3" Background="#FF13D3DC" Foreground="White"/>
         <ComboBox BorderThickness="2" BorderBrush="Gray" x:Name="cbDny" Width="75" IsEditable="True" SelectedIndex="0" FontWeight="Bold" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#FF13D3DC"/>
@@ -40,7 +40,7 @@
         <Label x:Name="lTyp" FontSize="16" Content="Typ účtu: " FontWeight="Bold" Grid.ColumnSpan="2" Foreground="White" Grid.Column="2" Grid.Row="1"/>
         <ComboBox BorderThickness="2" BorderBrush="Gray" x:Name="cbMesic" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75"  IsEditable="True" SelectedIndex="0" FontWeight="Bold" Grid.Column="0" Grid.Row="4" Margin="10,0,0,0" Foreground="#FF13D3DC"></ComboBox>
         <Button BorderThickness="1" BorderBrush="Gray" x:Name="bMesic" Content="Přeskočit měsíce" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Click="bMesic_Click" FontWeight="Bold" Grid.Column="0" Grid.Row="4" Background="White" Foreground="#FF13D3DC" Margin="0,0,10,0"/>
-        <ScrollViewer x:Name="docBar" BorderThickness="2" HorizontalAlignment="Left" Height="111" Grid.Column="2" Grid.Row="5" Grid.RowSpan="4"  VerticalAlignment="Top" Width="300"  Background="Gainsboro" BorderBrush="#FF464646" FontSize="12" Margin="0,10,0,0"/>
+        <ScrollViewer x:Name="docBar" BorderThickness="2" HorizontalAlignment="Left" Height="111" Grid.Column="2" Grid.Row="5" Grid.RowSpan="4"  VerticalAlignment="Top" Width="300"  Background="Gainsboro" BorderBrush="#FF464646" FontSize="12" Margin="0,10,0,0" Foreground="#FF13D3DC"/>
 
     </Grid>
 </Window>

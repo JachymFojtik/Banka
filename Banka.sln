@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29020.237
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1145
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banka", "Banka\Banka.csproj", "{EE550CF3-9506-4DC9-8DC7-811F5AA74D4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{0FE8B246-0889-4743-9B95-085694119DB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EE550CF3-9506-4DC9-8DC7-811F5AA74D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE550CF3-9506-4DC9-8DC7-811F5AA74D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE550CF3-9506-4DC9-8DC7-811F5AA74D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE8B246-0889-4743-9B95-085694119DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE8B246-0889-4743-9B95-085694119DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE8B246-0889-4743-9B95-085694119DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE8B246-0889-4743-9B95-085694119DB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

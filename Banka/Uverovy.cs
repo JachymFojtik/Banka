@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Banka
 {
-    class Uverovy : Ucet
+  public class Uverovy : Ucet
     {
         public double ZbyvaSplatit { get; set; } //termínů
         public static double Sazba { get; set; }
