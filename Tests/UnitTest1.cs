@@ -32,8 +32,17 @@ namespace Tests
         {
             // Zjistit zda funguje odečítání a přičítaní peněz - Uvěrový
             //Arrange
+            double sazba = 0.2;
+            double O = 1;
+            double testZustatek = 0;
+            TestU.Zustatek = 0;
             //Act
+            TestU.Pridat("101");
+            TestU.Mesic();
+            testZustatek = O / sazba;
+            O = testZustatek + O;
             //Assert
+            Assert.AreNotSame(O, TestU.Zustatek);
         }
         [TestMethod]
         public void TestMethod2()
