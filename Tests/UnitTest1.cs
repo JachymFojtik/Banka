@@ -28,7 +28,7 @@ namespace Tests
             Assert.AreNotSame(O,TestS.Zustatek);
         }
         [TestMethod]
-        public void TestMethod5()
+        public void TestMethod2()
         {
             // Zjistit zda funguje odečítání a přičítaní peněz - Uvěrový
             //Arrange
@@ -45,26 +45,36 @@ namespace Tests
             Assert.AreNotSame(O, TestU.Zustatek);
         }
         [TestMethod]
-        public void TestMethod2()
+        public void TestMethod3()
         {
             // Když je na kreditním nula úrok je take nula aka nezvetší se dluh
             //Arrange
+            double zustatek = -100;
+            double sazba = 0.2;
+            double O = 0;
+            TestU.Zustatek = 0;
             //Act
+            zustatek = zustatek + 100;
+            O = zustatek * sazba;
+            TestU.Mesic();
             //Assert
+            Assert.AreEqual(O, TestU.Zustatek);
         }
-        public void TestMethod3()
-        {
-            // Správné nastavemí času 
-            //Arrange
-            //Act
-            //Assert
-        }
+        [TestMethod]
         public void TestMethod4()
         {
-            // Limity účtu a jejich účtování
+            // Limity účtu a jejich účtování - student
             //Arrange
+            TestStudent.Zustatek = 100;
+            double zustatek = -900;
+            double O = 0;
+            double sazba = 0.2;
             //Act
+            TestStudent.Vybrat("1000");
+            TestStudent.Mesic();
+            O = zustatek * sazba;
             //Assert
+            Assert.AreNotEqual(O, TestStudent.Zustatek);
         }
     }
 }
