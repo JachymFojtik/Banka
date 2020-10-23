@@ -27,7 +27,7 @@
 
         </ComboBox>
         <TextBox BorderThickness="2" BorderBrush="Gray" Text="100 " x:Name="tbVklad" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" TextWrapping="Wrap" Width="120" FontSize="16" Margin="25,0,0,5" Foreground="#FF13D3DC"/>
-        <Label Content="Vklad :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="25,5,0,0" FontSize="14" Foreground="White" FontWeight="Bold" FontFamily="Tahoma"/>
+        <Label x:Name="lVklad" Content="Vklad :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="25,5,0,0" FontSize="14" Foreground="White" FontWeight="Bold" FontFamily="Tahoma"/>
         <Label Content="Jmeno :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" Margin="25,5,0,0" FontSize="14" Foreground="White" FontWeight="Bold" FontFamily="Tahoma"/>
         <Label Content="Typ účtu :" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,0,0,0" RenderTransformOrigin="1.234,0.767" FontSize="14" BorderBrush="#FFB21616" Foreground="White" FontWeight="Bold" FontFamily="Tahoma"/>
         <TextBox BorderThickness="2" BorderBrush="Gray" x:Name="tbDobaSplatky"  Height="25" Width="44" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="53,0,0,9" FontSize="16" Foreground="White" Grid.Column="1" Visibility="Visible" Background="#FF132EDC" />

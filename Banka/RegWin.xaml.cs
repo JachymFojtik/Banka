@@ -104,11 +104,13 @@ namespace Banka
         {
             if (cbTyp.SelectedItem == "Úvěrový")
             {
+                lVklad.Content = "Půjčka:";
                 label1.Visibility = Visibility.Visible;
                 tbDobaSplatky.Visibility = Visibility.Visible;
             }
             else
             {
+                lVklad.Content = "Vklad:";
                 label1.Visibility = Visibility.Hidden;
                 tbDobaSplatky.Visibility = Visibility.Hidden;   
             } 
