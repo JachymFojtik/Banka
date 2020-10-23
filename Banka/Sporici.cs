@@ -9,7 +9,6 @@ namespace Banka
 {
     public class Sporici : Ucet
     {
-        public double Anuita { get; set; }
         public static double Sazba { get; set; }
         public Sporici(string jmeno, double z)
         {

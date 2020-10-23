@@ -71,7 +71,7 @@ namespace Banka
             }
 
             Studentsky stud1 = new Studentsky("Honza", 100);
-            Uverovy s2 = new Uverovy("Petr", 500,3);
+            Uverovy s2 = new Uverovy("Petr", 500,4);
             Sporici s1 = new Sporici("Jachym",400);
 
             Ucty.Add(s1);
@@ -233,7 +233,6 @@ namespace Banka
                 if (ucet is Uverovy)
                 {
                     Uverovy u = ucet as Uverovy;
-                    //u.ZbyvaSplatit -= pocetMesicu;
                     ucet.Zustatek = Uverovy.Mesic(ucet as Uverovy,pocetMesicu);
                     if (u.ZbyvaSplatit >= 0)
                     {

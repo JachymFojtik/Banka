@@ -44,6 +44,7 @@ namespace Banka
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            bool canExit = false;
             int vklad;
             bool vklad_JeInt = int.TryParse(tbVklad.Text, out vklad);
             if (vklad_JeInt)
@@ -56,9 +57,19 @@ namespace Banka
                         if (tbJmeno.Text == "")
                         {
                             MessageBox.Show("Zadejte jméno účtu");
+                            
                         }
-                        string s = $"{cbTyp.SelectedItem}-{tbJmeno.Text}-{vklad}-{i}";
-                        Ucty.Add(s);
+                        else if (vklad<=0)
+                        {
+                            MessageBox.Show("Počáteční zůstatek musí být větší než 0");
+                        }
+                        else
+                        {
+                            canExit = true;
+                            string s = $"{cbTyp.SelectedItem}-{tbJmeno.Text}-{vklad}-{i}";
+                            Ucty.Add(s);
+                        }
+                        
                     }
                     catch (Exception)
                     {
@@ -73,11 +84,14 @@ namespace Banka
                     Ucty.Add(s);
                 }
 
+                if (canExit)
+                {
+                    File.WriteAllLines("ucty.txt", Ucty);
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                    Close();
+                }
 
-                File.WriteAllLines("ucty.txt", Ucty);
-                MainWindow main = new MainWindow();
-                main.Show();
-                Close();
             }
             else
             {

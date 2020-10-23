@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Banka
 {
-  public  class Studentsky : Sporici
+  public class Studentsky : Sporici
     {
         private DateTime dnes;
         public bool vybranoDnes = false;

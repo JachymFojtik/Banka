@@ -15,7 +15,7 @@ namespace Banka
         public Uverovy(string jmeno, double z,int dobaSplatky)
         {
             Sazba = 0.12;
-            DobaSplatky = dobaSplatky;
+            DobaSplatky = Math.Abs(dobaSplatky);
             Jmeno = jmeno;
             Zustatek = z;
 
